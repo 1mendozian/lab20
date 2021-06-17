@@ -1,0 +1,39 @@
+using System;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите строку: ");
+            String s = Console.ReadLine();
+            string[] vid = s.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < vid.Length; i++)
+            {
+                if ((i + 1) % 2 == 0)
+                {
+                    Console.WriteLine((i + 1) + " - Чётное слово");
+                }
+                else
+                {
+                    Console.Write((i + 1) + " - Нечётное слово: - ");
+                    var word = "";
+                    for (int q = 0; q < vid[i].Length; q++)
+                    {
+                        if ((q + 1) % 2 == 0)
+                        {
+                            word += "1";
+                        }
+                        else
+                        {
+                            word += vid[i][q];
+                        }
+                    }
+                    Console.WriteLine(word);
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
