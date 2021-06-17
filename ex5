@@ -1,0 +1,26 @@
+using System;
+using System.Linq;
+
+public class Program
+{
+    public static void Main()
+    {
+        string sNumber = string.Empty;
+        int number = 0;
+
+        Console.Write("Введите натуральное число: ");
+        sNumber = Console.ReadLine();
+        while (!int.TryParse(sNumber, out number))
+        {
+            Console.Write("Введённая строка не является натуральным числом!\nПовторите ввод: ");
+            sNumber = Console.ReadLine();
+        }
+
+        sNumber = string.Join(" ", sNumber.Reverse().Select((ch, ind) => ind).Where(ind => ind % 3 == 0).
+                                   Select(ind => sNumber.Substring(ind, sNumber.Length - ind >= 3 ? 3 : sNumber.Length - ind)).Reverse().ToArray());
+
+        Console.WriteLine("Заданное число, изменённое в соответствии с заданным форматом: {0}", sNumber);
+
+        Console.ReadKey();
+    }
+}
